@@ -65,8 +65,7 @@ public class FedexDeliveryCostService implements DeliveryCostService {
         requestedShipment.setShipTimestamp(Calendar.getInstance());
         requestedShipment.setDropoffType(DropoffType.REGULAR_PICKUP);
         if (! getAllRatesFlag) {
-        	//requestedShipment.setServiceType(ServiceType.PRIORITY_OVERNIGHT);
-        	requestedShipment.setServiceType(ServiceType.INTERNATIONAL_ECONOMY);
+        	requestedShipment.setServiceType(getServiceType(request));
         	requestedShipment.setPackagingType(PackagingType.YOUR_PACKAGING);
         }
         
@@ -251,5 +250,15 @@ public class FedexDeliveryCostService implements DeliveryCostService {
 			}
 		}
 		return minimalDeliveryCost;
+	}
+	
+	private ServiceType getServiceType(DeliveryCostRequest request) {
+		if (request.getShipper().getCountry().equals("US") && 
+				request.getRecipient().getCountry().equals("US")) {
+			return ServiceType.PRIORITY_OVERNIGHT;
+		}
+		else {
+			return ServiceType.INTERNATIONAL_ECONOMY;
+		}
 	}
 }
