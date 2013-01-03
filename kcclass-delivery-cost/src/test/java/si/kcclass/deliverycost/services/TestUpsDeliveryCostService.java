@@ -9,13 +9,13 @@ import org.junit.Test;
 import si.kcclass.deliverycost.domain.Address;
 import si.kcclass.deliverycost.domain.DeliveryCostRequest;
 
-public class TestFedexDeliveryCostService {
+public class TestUpsDeliveryCostService {
 	
-	private FedexDeliveryCostService service;
+	private UpsDeliveryCostService service;
 
 	@Before
 	public void setUp() throws Exception {
-		service = new FedexDeliveryCostService();
+		service = new UpsDeliveryCostService();
 	}
 
 	@After
@@ -35,7 +35,7 @@ public class TestFedexDeliveryCostService {
 		request.setShipper(shipper);
 		request.setRecipient(recipient);
 		request.setWeight(10.0);
-		
+
 		Double deliveryCost = service.getDeliveryCost(request);
 		assertNotNull(deliveryCost);
 	}
@@ -54,7 +54,6 @@ public class TestFedexDeliveryCostService {
 		request.setRecipient(recipient);
 		request.setWeight(10.0);
 
-		FedexDeliveryCostService service = new FedexDeliveryCostService();
 		Double deliveryCost = service.getDeliveryCost(request);
 		assertNotNull(deliveryCost);
 	}

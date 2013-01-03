@@ -55,64 +55,35 @@ public class FedexDeliveryCostService implements DeliveryCostService {
         	requestedShipment.setPackagingType(PackagingType.YOUR_PACKAGING);
         }
         
-        
         Party shipper = new Party();
 	    Address shipperAddress = new Address(); // Origin information
-	    //shipperAddress.setStreetLines(new String[] {"6233 Winchester Rd"});
-	    //shipperAddress.setCity("Memphis");
-	    //shipperAddress.setStateOrProvinceCode("TN");
-	    
-	    //shipperAddress.setPostalCode("38115");
-	    //shipperAddress.setCountryCode("US");
 	    shipperAddress.setPostalCode(request.getShipper().getPostalCode());
 	    shipperAddress.setCountryCode(request.getShipper().getCountry());
         shipper.setAddress(shipperAddress);
         requestedShipment.setShipper(shipper);
 
-	    //
         Party recipient = new Party();
 	    Address recipientAddress = new Address(); // Destination information
-	    //recipientAddress.setStreetLines(new String[] {"8001 Pauline Vanier"});
-	    //recipientAddress.setCity("COLLIERVILLE");
-	    //recipientAddress.setStateOrProvinceCode("TN");
-	    //recipientAddress.setPostalCode("38017");
-	    //recipientAddress.setCountryCode("US");
-	    
-	    //recipientAddress.setPostalCode("6225");
-	    //recipientAddress.setCountryCode("SI");
 	    recipientAddress.setPostalCode(request.getRecipient().getPostalCode());
 	    recipientAddress.setCountryCode(request.getRecipient().getCountry());
 	    recipient.setAddress(recipientAddress);
 	    requestedShipment.setRecipient(recipient);
 
-	    //
 	    Payment shippingChargesPayment = new Payment();
 	    shippingChargesPayment.setPaymentType(PaymentType.SENDER);
 	    requestedShipment.setShippingChargesPayment(shippingChargesPayment);
 
 	    RequestedPackageLineItem rp = new RequestedPackageLineItem();
 	    rp.setGroupPackageCount(new NonNegativeInteger("1"));
-	    //rp.setWeight(new Weight(WeightUnits.LB, new BigDecimal(15.0)));
 	    rp.setWeight(new Weight(WeightUnits.KG, new BigDecimal(request.getWeight())));
-	    //
-	    //rp.setInsuredValue(new Money("USD", new BigDecimal("100.00")));
-	    //
-	    //rp.setDimensions(new Dimensions(new NonNegativeInteger("1"), new NonNegativeInteger("1"), new NonNegativeInteger("1"), LinearUnits.IN));
 	    PackageSpecialServicesRequested pssr = new PackageSpecialServicesRequested();
 	    rp.setSpecialServicesRequested(pssr);
 	    requestedShipment.setRequestedPackageLineItems(new RequestedPackageLineItem[] {rp});
-
-	    
-	    //requestedShipment.setPackageCount(new NonNegativeInteger("1"));
-	    //requestedShipment.setRateRequestTypes(new RateRequestType[] {RateRequestType.ACCOUNT});
 	    fedexWsRequest.setRequestedShipment(requestedShipment);
-	    
-	    //
 		try {
 			// Initialize the service
 			RateServiceLocator service;
 			RatePortType port;
-			//
 			service = new RateServiceLocator();
 			updateEndPoint(service);
 			port = service.getRateServicePort();
@@ -133,10 +104,8 @@ public class FedexDeliveryCostService implements DeliveryCostService {
         String accountNumber = System.getProperty("accountNumber");
         String meterNumber = System.getProperty("meterNumber");
         
-        //
         // See if the accountNumber and meterNumber properties are set,
         // if set use those values, otherwise default them to "XXX"
-        //
         if (accountNumber == null) {
         	accountNumber = "510087224"; // Replace "XXX" with clients account number
         }
@@ -153,10 +122,8 @@ public class FedexDeliveryCostService implements DeliveryCostService {
         String key = System.getProperty("key");
         String password = System.getProperty("password");
         
-        //
         // See if the key and password properties are set,
         // if set use those values, otherwise default them to "XXX"
-        //
         if (key == null) {
         	key = "UCRMCXUzM8Rsnrpk";
         }

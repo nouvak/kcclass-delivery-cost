@@ -1,13 +1,47 @@
 package si.kcclass.deliverycost.services;
 
+import java.util.List;
+
 import si.kcclass.deliverycost.domain.DeliveryCostRequest;
 
+import com.ecocoma.service.shipping.ups.Postage;
+import com.ecocoma.service.shipping.ups.Shipping;
+import com.ecocoma.service.shipping.ups.UPSService;
+import com.ecocoma.service.shipping.ups.UPSServiceSoap;
+
 public class UpsDeliveryCostService implements DeliveryCostService {
+	
+	/**
+	 * The key can be retrieved from the page below:
+	 * http://www.ecocoma.com/shipping_webservice.aspx
+	 */
+	private String KEY_ID = "SHP-T36467996J";
+	private String DOMAIN_ID = "";
+
+	private UPSServiceSoap service;
+	
+	public UpsDeliveryCostService() {
+		UPSService serviceImpl = new UPSService();
+		service = serviceImpl.getUPSServiceSoap();
+	}
 
 	@Override
 	public Double getDeliveryCost(DeliveryCostRequest request) {
-		// TODO Auto-generated method stub
-		return null;
+		Double minimalDeliveryCost = null; 
+		Shipping rates = service.getUPSRate(KEY_ID, DOMAIN_ID,
+				request.getShipper().getPostalCode(), 
+				request.getShipper().getCountry(),
+				request.getRecipient().getPostalCode(), 
+				request.getRecipient().getCountry(), 
+				request.getWeight().toString(), null);
+		List<Postage> postages = rates.getPackage().getPostage();
+		for (Postage postage: postages) {
+			Double rate = Double.parseDouble(postage.getRate());
+			if (minimalDeliveryCost == null || rate < minimalDeliveryCost) {
+				minimalDeliveryCost = rate;
+			}
+		}
+		return minimalDeliveryCost;
 	}
 
 }
