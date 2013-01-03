@@ -10,11 +10,18 @@ import si.kcclass.deliverycost.domain.Address;
 import si.kcclass.deliverycost.domain.DeliveryCostRequest;
 
 public class TestFedexDeliveryCostService {
-	
-	private DeliveryCostRequest request;
 
 	@Before
 	public void setUp() throws Exception {
+	}
+
+	@After
+	public void tearDown() throws Exception {
+	}
+
+	@Test
+	public void testGetDeliveryCostEurope() {
+		DeliveryCostRequest request;
 		Address shipper = new Address();
 		shipper.setCountry("US");
 		shipper.setPostalCode("38115");
@@ -25,17 +32,30 @@ public class TestFedexDeliveryCostService {
 		request.setShipper(shipper);
 		request.setRecipient(recipient);
 		request.setWeight(10.0);
-	}
 
-	@After
-	public void tearDown() throws Exception {
-	}
-
-	@Test
-	public void testGetDeliveryCost() {
 		FedexDeliveryCostService service = new FedexDeliveryCostService();
 		Double deliveryCost = service.getDeliveryCost(request);
 		assertNotNull(deliveryCost);
 	}
+	
+	@Test
+	public void testGetDeliveryCostUSA() {
+		DeliveryCostRequest request;
+		Address shipper = new Address();
+		shipper.setCountry("US");
+		shipper.setPostalCode("38115");
+		Address recipient = new Address();
+		recipient.setCountry("US");
+		recipient.setPostalCode("38017");
+		request = new DeliveryCostRequest();
+		request.setShipper(shipper);
+		request.setRecipient(recipient);
+		request.setWeight(10.0);
+
+		FedexDeliveryCostService service = new FedexDeliveryCostService();
+		Double deliveryCost = service.getDeliveryCost(request);
+		assertNotNull(deliveryCost);
+	}
+
 
 }
