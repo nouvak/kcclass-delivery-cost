@@ -41,6 +41,7 @@ public class UpsDeliveryCostService implements DeliveryCostService {
 				minimalDeliveryCost = rate;
 			}
 		}
+		// TODO: convert dollars to euro.
 		return minimalDeliveryCost;
 	}
 

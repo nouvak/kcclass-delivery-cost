@@ -54,7 +54,6 @@ public class TestFedexDeliveryCostService {
 		request.setRecipient(recipient);
 		request.setWeight(10.0);
 
-		FedexDeliveryCostService service = new FedexDeliveryCostService();
 		Double deliveryCost = service.getDeliveryCost(request);
 		assertNotNull(deliveryCost);
 	}

@@ -90,6 +90,7 @@ public class FedexDeliveryCostService implements DeliveryCostService {
 			// This is the call to the web service passing in a RateRequest and returning a RateReply
 			RateReply reply = port.getRates(fedexWsRequest); // Service call
 			if (isResponseOk(reply.getHighestSeverity())) {
+				// TODO: convert dollars to euro.
 				return getMinimalDeliveryCost(reply);
 			}
 		}
