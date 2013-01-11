@@ -4,4 +4,11 @@
     <definition extends="default" name="deliverycost/index">
         <put-attribute name="body" value="/WEB-INF/views/deliverycost/index.jspx"/>
     </definition>
+    <definition extends="default" name="deliverycost/request">
+        <put-attribute name="body" value="/WEB-INF/views/deliverycost/deliveryCostRequest.jspx"/>
+    </definition>
+    <definition extends="default" name="deliverycost/response">
+        <put-attribute name="body" value="/WEB-INF/views/deliverycost/deliveryCostRequest.jspx"/>
+    </definition>
+
 </tiles-definitions>
