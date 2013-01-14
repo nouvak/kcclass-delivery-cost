@@ -12,12 +12,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class DeliveryCostController {
 
-    @RequestMapping(method = RequestMethod.POST, value = "{id}")
+    /*@RequestMapping(method = RequestMethod.POST, value = "{id}")
     public void post(@PathVariable Long id, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
     }
 
     @RequestMapping
     public String index() {
         return "deliverycost/index";
+    }*/
+    
+    @RequestMapping
+    public String deliveryCostForm() {
+    	return "deliverycost/request";
+    }
+    
+    @RequestMapping(method = RequestMethod.POST)
+    public String deliveryCost() {
+    	return "deliverycost/response";
     }
 }
