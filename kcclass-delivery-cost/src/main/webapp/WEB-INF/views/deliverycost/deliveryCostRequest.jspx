@@ -1,38 +1,42 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" xmlns:mvcField="http://www.springframework.org/tags/form" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
-    <form method="post" action="">
+    <mvcField:form action="deliverycost" method="post" commandName="deliveryCostRequest">
     	<fieldset>
 			<legend>Shipper address</legend>
 			<div>
-		    	<label for="shipper-street">Street</label>
-				<input type="text" id="shipper-street" name="shipperStreet" />
+		    	<label for="shipperStreet">Street</label>
+				<mvcField:input  path="shipper.street" />
 			</div>
 			<div>
-		    	<label for="shipper-post">Post</label>
-				<input type="text" id="shipper-post" name="shipperPost" />
+		    	<label for="shipperPost">Post</label>
+				<mvcField:select path="shipper.postalCode" items="${posts}" />
 			</div>
 			<div>
-		    	<label for="shipper-country">Country</label>
-				<input type="text" id="shipper-country" name="shipperCountry" />
+		    	<label for="shipperCountry">Country</label>
+				<mvcField:select path="shipper.country" items="${countries}" />
 			</div>
 		</fieldset>
     	<fieldset>
 			<legend>Recipient address</legend>
-	    	<label for="recipient-street">Street</label>
-			<input type="text" id="recipient-street" name="recipientStreet" />
-			<br />
-	    	<label for="recipient-post">Post</label>
-			<input type="text" id="recipient-post" name="recipientPost" />
-			<br />
-	    	<label for="recipient-country">Country</label>
-			<input type="text" id="recipient-country" name="recipientCountry" />
+			<div>
+		    	<label for="recipientStreet">Street</label>
+				<mvcField:input  path="recipient.street" />
+			</div>
+			<div>
+		    	<label for="recipientPost">Post</label>
+				<mvcField:select path="recipient.postalCode" items="${posts}" />
+			</div>
+			<div>
+		    	<label for="recipientCountry">Country</label>
+				<mvcField:select path="recipient.country" items="${countries}" />
+			</div>
 		</fieldset>
 		<div style="margin-top: 10px;">
 	    	<label for="shipment-weight">Weight</label>
-			<input type="text" id="shipment-weight" name="weight" />
+			<mvcField:input path="weight" />
 		</div>
     	<input type="submit" value="Calculate rate" />
-    </form>
+    </mvcField:form>
 </div>
