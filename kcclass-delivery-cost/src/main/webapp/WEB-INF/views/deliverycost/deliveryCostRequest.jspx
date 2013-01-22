@@ -3,7 +3,36 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <form method="post" action="">
-    	<input type="text" />
-    	<input type="submit" value="Submit" />
+    	<fieldset>
+			<legend>Shipper address</legend>
+			<div>
+		    	<label for="shipper-street">Street</label>
+				<input type="text" id="shipper-street" name="shipperStreet" />
+			</div>
+			<div>
+		    	<label for="shipper-post">Post</label>
+				<input type="text" id="shipper-post" name="shipperPost" />
+			</div>
+			<div>
+		    	<label for="shipper-country">Country</label>
+				<input type="text" id="shipper-country" name="shipperCountry" />
+			</div>
+		</fieldset>
+    	<fieldset>
+			<legend>Recipient address</legend>
+	    	<label for="recipient-street">Street</label>
+			<input type="text" id="recipient-street" name="recipientStreet" />
+			<br />
+	    	<label for="recipient-post">Post</label>
+			<input type="text" id="recipient-post" name="recipientPost" />
+			<br />
+	    	<label for="recipient-country">Country</label>
+			<input type="text" id="recipient-country" name="recipientCountry" />
+		</fieldset>
+		<div style="margin-top: 10px;">
+	    	<label for="shipment-weight">Weight</label>
+			<input type="text" id="shipment-weight" name="weight" />
+		</div>
+    	<input type="submit" value="Calculate rate" />
     </form>
 </div>
