@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Calendar;
 
 import org.apache.axis.types.NonNegativeInteger;
+import org.springframework.stereotype.Service;
 
 import si.kcclass.deliverycost.domain.DeliveryCostRequest;
 
@@ -32,6 +33,7 @@ import com.fedex.rate.stub.WebAuthenticationDetail;
 import com.fedex.rate.stub.Weight;
 import com.fedex.rate.stub.WeightUnits;
 
+@Service
 public class FedexDeliveryCostService implements DeliveryCostService {
 
 	@Override

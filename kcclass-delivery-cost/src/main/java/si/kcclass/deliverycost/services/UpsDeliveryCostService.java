@@ -2,6 +2,8 @@ package si.kcclass.deliverycost.services;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import si.kcclass.deliverycost.domain.DeliveryCostRequest;
 
 import com.ecocoma.service.shipping.ups.Postage;
@@ -9,6 +11,7 @@ import com.ecocoma.service.shipping.ups.Shipping;
 import com.ecocoma.service.shipping.ups.UPSService;
 import com.ecocoma.service.shipping.ups.UPSServiceSoap;
 
+@Service
 public class UpsDeliveryCostService implements DeliveryCostService {
 	
 	/**

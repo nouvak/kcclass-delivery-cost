@@ -1,7 +1,10 @@
 package si.kcclass.deliverycost.services;
 
+import org.springframework.stereotype.Service;
+
 import si.kcclass.deliverycost.domain.DeliveryCostRequest;
 
+@Service
 public class PostOfSloveniaDeliveryCostService implements DeliveryCostService {
 	
 	@Override

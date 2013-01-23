@@ -68,5 +68,9 @@
         <property name="persistenceUnitName" value="persistenceUnit"/>
         <property name="dataSource" ref="dataSource"/>
     </bean>
+	<!-- provides a H2 console to look into the db if necessary -->
+<!-- 	<bean id="h2WebServer" class="org.h2.tools.Server" factory-method="createWebServer" init-method="start" lazy-init="false"> -->
+<!-- 		<constructor-arg value="-web,-webPort,8082" /> -->
+<!-- 	</bean> -->
 
 </beans>
