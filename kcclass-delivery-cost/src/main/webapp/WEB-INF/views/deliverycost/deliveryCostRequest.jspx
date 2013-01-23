@@ -6,35 +6,35 @@
     	<fieldset>
 			<legend>Shipper address</legend>
 			<div>
-		    	<label for="shipperStreet">Street</label>
+		    	<label for="shipper.street">Street</label>
 				<mvcField:input  path="shipper.street" />
 			</div>
 			<div>
-		    	<label for="shipperPost">Post</label>
-				<mvcField:select path="shipper.postalCode" items="${posts}" />
+		    	<label for="shipper.postalCode">Post</label>
+				<mvcField:input  path="shipper.postalCode" />
 			</div>
 			<div>
-		    	<label for="shipperCountry">Country</label>
+		    	<label for="shipper.country">Country</label>
 				<mvcField:select path="shipper.country" items="${countries}" />
 			</div>
 		</fieldset>
     	<fieldset>
 			<legend>Recipient address</legend>
 			<div>
-		    	<label for="recipientStreet">Street</label>
+		    	<label for="recipient.street">Street</label>
 				<mvcField:input  path="recipient.street" />
 			</div>
 			<div>
-		    	<label for="recipientPost">Post</label>
-				<mvcField:select path="recipient.postalCode" items="${posts}" />
+		    	<label for="recipient.postalCode">Post</label>
+				<mvcField:input  path="recipient.postalCode" />
 			</div>
 			<div>
-		    	<label for="recipientCountry">Country</label>
+		    	<label for="recipient.country">Country</label>
 				<mvcField:select path="recipient.country" items="${countries}" />
 			</div>
 		</fieldset>
 		<div style="margin-top: 10px;">
-	    	<label for="shipment-weight">Weight</label>
+	    	<label for="weight">Weight</label>
 			<mvcField:input path="weight" />
 		</div>
     	<input type="submit" value="Calculate rate" />
