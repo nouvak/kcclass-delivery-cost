@@ -17,4 +17,8 @@ public class Post {
 
     @NotNull
     private String name;
+    
+    public String toString() {
+    	return zipCode + " - " + name;
+    }
 }

@@ -12,7 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 import si.kcclass.deliverycost.domain.Country;
 import si.kcclass.deliverycost.domain.DeliveryCostRequest;
 import si.kcclass.deliverycost.domain.Post;
-import si.kcclass.deliverycost.domain.Test;
 
 @RequestMapping("/deliverycost/**")
 @Controller
