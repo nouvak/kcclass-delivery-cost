@@ -18,7 +18,7 @@ public class UpsDeliveryCostService implements DeliveryCostService {
 	 * The key can be retrieved from the page below:
 	 * http://www.ecocoma.com/shipping_webservice.aspx
 	 */
-	private String KEY_ID = "SHP-T36467996J";
+	private String KEY_ID = "SHP-T36468206J";
 	private String DOMAIN_ID = "";
 
 	private UPSServiceSoap service;
@@ -40,6 +40,9 @@ public class UpsDeliveryCostService implements DeliveryCostService {
 		List<Postage> postages = rates.getPackage().getPostage();
 		for (Postage postage: postages) {
 			Double rate = Double.parseDouble(postage.getRate());
+			if (rate == 0.0) {
+				continue;
+			}
 			if (minimalDeliveryCost == null || rate < minimalDeliveryCost) {
 				minimalDeliveryCost = rate;
 			}

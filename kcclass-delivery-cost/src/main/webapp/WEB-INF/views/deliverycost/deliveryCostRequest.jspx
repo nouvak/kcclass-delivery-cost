@@ -6,10 +6,6 @@
     	<fieldset>
 			<legend>Shipper address</legend>
 			<div>
-		    	<label for="shipper.street">Street</label>
-				<mvcField:input  path="shipper.street" />
-			</div>
-			<div>
 		    	<label for="shipper.postalCode">Post</label>
 				<mvcField:input  path="shipper.postalCode" />
 			</div>
@@ -20,10 +16,6 @@
 		</fieldset>
     	<fieldset>
 			<legend>Recipient address</legend>
-			<div>
-		    	<label for="recipient.street">Street</label>
-				<mvcField:input  path="recipient.street" />
-			</div>
 			<div>
 		    	<label for="recipient.postalCode">Post</label>
 				<mvcField:input  path="recipient.postalCode" />
