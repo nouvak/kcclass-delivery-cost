@@ -15,7 +15,7 @@
 			</div>
 			<div>
 		    	<label for="shipper.country">Country</label>
-				<mvcField:select path="shipper.country" items="${countries}" />
+				<mvcField:select path="shipper.country" items="${countries}" itemValue="id" />
 			</div>
 		</fieldset>
     	<fieldset>
@@ -30,7 +30,7 @@
 			</div>
 			<div>
 		    	<label for="recipient.country">Country</label>
-				<mvcField:select path="recipient.country" items="${countries}" />
+				<mvcField:select path="recipient.country" items="${countries}" itemValue="id" />
 			</div>
 		</fieldset>
 		<div style="margin-top: 10px;">

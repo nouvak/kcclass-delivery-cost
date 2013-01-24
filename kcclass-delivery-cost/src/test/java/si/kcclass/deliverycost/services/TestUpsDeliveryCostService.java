@@ -7,15 +7,27 @@ import org.junit.Before;
 import org.junit.Test;
 
 import si.kcclass.deliverycost.domain.Address;
+import si.kcclass.deliverycost.domain.Country;
 import si.kcclass.deliverycost.domain.DeliveryCostRequest;
 
 public class TestUpsDeliveryCostService {
+	
+	private Country countryUsa;
+	private Country countrySlovenia;
 	
 	private UpsDeliveryCostService service;
 
 	@Before
 	public void setUp() throws Exception {
 		service = new UpsDeliveryCostService();
+		
+		countryUsa = new Country();
+		countryUsa.setCode("US");
+		countryUsa.setName("United States");
+		
+		countrySlovenia = new Country();
+		countrySlovenia.setCode("SI");
+		countrySlovenia.setName("Slovenia");
 	}
 
 	@After
@@ -26,10 +38,10 @@ public class TestUpsDeliveryCostService {
 	public void testGetDeliveryCostEurope() {
 		DeliveryCostRequest request;
 		Address shipper = new Address();
-		shipper.setCountry("US");
+		shipper.setCountry(countryUsa);
 		shipper.setPostalCode("38115");
 		Address recipient = new Address();
-		recipient.setCountry("SI");
+		recipient.setCountry(countrySlovenia);
 		recipient.setPostalCode("6225");
 		request = new DeliveryCostRequest();
 		request.setShipper(shipper);
@@ -44,10 +56,10 @@ public class TestUpsDeliveryCostService {
 	public void testGetDeliveryCostUSA() {
 		DeliveryCostRequest request;
 		Address shipper = new Address();
-		shipper.setCountry("US");
+		shipper.setCountry(countryUsa);
 		shipper.setPostalCode("38115");
 		Address recipient = new Address();
-		recipient.setCountry("US");
+		recipient.setCountry(countryUsa);
 		recipient.setPostalCode("38017");
 		request = new DeliveryCostRequest();
 		request.setShipper(shipper);

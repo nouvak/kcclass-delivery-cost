@@ -33,9 +33,9 @@ public class UpsDeliveryCostService implements DeliveryCostService {
 		Double minimalDeliveryCost = null; 
 		Shipping rates = service.getUPSRate(KEY_ID, DOMAIN_ID,
 				request.getShipper().getPostalCode(), 
-				request.getShipper().getCountry(),
+				request.getShipper().getCountry().getCode(),
 				request.getRecipient().getPostalCode(), 
-				request.getRecipient().getCountry(), 
+				request.getRecipient().getCountry().getCode(), 
 				request.getWeight().toString(), null);
 		List<Postage> postages = rates.getPackage().getPostage();
 		for (Postage postage: postages) {

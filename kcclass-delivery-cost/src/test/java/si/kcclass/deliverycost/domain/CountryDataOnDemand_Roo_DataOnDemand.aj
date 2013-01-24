@@ -24,8 +24,14 @@ privileged aspect CountryDataOnDemand_Roo_DataOnDemand {
     
     public Country CountryDataOnDemand.getNewTransientCountry(int index) {
         Country obj = new Country();
+        setCode(obj, index);
         setName(obj, index);
         return obj;
+    }
+    
+    public void CountryDataOnDemand.setCode(Country obj, int index) {
+        String code = "code_" + index;
+        obj.setCode(code);
     }
     
     public void CountryDataOnDemand.setName(Country obj, int index) {

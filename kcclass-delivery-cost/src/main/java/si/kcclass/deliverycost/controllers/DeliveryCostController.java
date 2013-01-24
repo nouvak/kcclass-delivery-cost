@@ -14,6 +14,16 @@ import si.kcclass.deliverycost.services.FedexDeliveryCostService;
 import si.kcclass.deliverycost.services.PostOfSloveniaDeliveryCostService;
 import si.kcclass.deliverycost.services.UpsDeliveryCostService;
 
+/**
+ * Calculate the delivery cost for different shipping providers
+ * (FedEx, UPS, Post of Slovenia)
+ * 
+ * Example input values:
+ * 	- shipper country: Slovenia
+ *  - shipper zip code: 1000
+ *  - recipient country: USA
+ *  - recipient zip code: 38115 
+ */
 @RequestMapping("/deliverycost/**")
 @Controller
 public class DeliveryCostController {

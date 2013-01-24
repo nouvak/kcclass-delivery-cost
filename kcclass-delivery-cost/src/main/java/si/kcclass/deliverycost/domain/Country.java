@@ -11,8 +11,10 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooJpaActiveRecord
 public class Country {
 
+	@NotNull
+	@Column(unique = true)
+	private String code;
     @NotNull
-    @Column(unique = true)
     private String name;
     
     public String toString() {

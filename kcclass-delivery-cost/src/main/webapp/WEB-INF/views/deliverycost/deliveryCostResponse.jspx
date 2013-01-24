@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" xmlns:mvcField="http://www.springframework.org/tags/form" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
+    
+    <H1>Delivery rates</H1>
+    <TABLE>
+    	<TR><TH>Delivery provider</TH><TH>Cost</TH></TR>
+    	<c:if test="${fedexDeliveryCost != null}">
+	    	<TR>
+	    		<TD>FedEx</TD>
+	    		<TD>${fedexDeliveryCost}</TD>
+	    	</TR>
+    	</c:if>
+    	<c:if test="${postOfSlovenia != null}">
+	    	<TR>
+	    		<TD>Post of Slovenia</TD>
+	    		<TD>${postOfSlovenia}</TD>
+	    	</TR>
+    	</c:if>
+    	<c:if test="${upsDeliveryCost != null}">
+	    	<TR>
+	    		<TD>UPS</TD>
+	    		<TD>${upsDeliveryCost}</TD>
+	    	</TR>
+    	</c:if>
+    </TABLE>
 </div>

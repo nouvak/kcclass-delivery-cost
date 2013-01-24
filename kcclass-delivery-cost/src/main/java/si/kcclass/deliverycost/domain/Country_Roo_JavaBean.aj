@@ -7,6 +7,14 @@ import si.kcclass.deliverycost.domain.Country;
 
 privileged aspect Country_Roo_JavaBean {
     
+    public String Country.getCode() {
+        return this.code;
+    }
+    
+    public void Country.setCode(String code) {
+        this.code = code;
+    }
+    
     public String Country.getName() {
         return this.name;
     }

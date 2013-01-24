@@ -60,14 +60,14 @@ public class FedexDeliveryCostService implements DeliveryCostService {
         Party shipper = new Party();
 	    Address shipperAddress = new Address(); // Origin information
 	    shipperAddress.setPostalCode(request.getShipper().getPostalCode());
-	    shipperAddress.setCountryCode(request.getShipper().getCountry());
+	    shipperAddress.setCountryCode(request.getShipper().getCountry().getCode());
         shipper.setAddress(shipperAddress);
         requestedShipment.setShipper(shipper);
 
         Party recipient = new Party();
 	    Address recipientAddress = new Address(); // Destination information
 	    recipientAddress.setPostalCode(request.getRecipient().getPostalCode());
-	    recipientAddress.setCountryCode(request.getRecipient().getCountry());
+	    recipientAddress.setCountryCode(request.getRecipient().getCountry().getCode());
 	    recipient.setAddress(recipientAddress);
 	    requestedShipment.setRecipient(recipient);
 
@@ -176,8 +176,8 @@ public class FedexDeliveryCostService implements DeliveryCostService {
 	}
 	
 	private ServiceType getServiceType(DeliveryCostRequest request) {
-		if (request.getShipper().getCountry().equals("US") && 
-				request.getRecipient().getCountry().equals("US")) {
+		if (request.getShipper().getCountry().getCode().equals("US") && 
+				request.getRecipient().getCountry().getCode().equals("US")) {
 			return ServiceType.PRIORITY_OVERNIGHT;
 		}
 		else {

@@ -10,16 +10,16 @@ public class PostOfSloveniaDeliveryCostService implements DeliveryCostService {
 	@Override
 	public Double getDeliveryCost(DeliveryCostRequest request) {
 		try {
-			if (!request.getShipper().getCountry().equals("SI")) {
+			if (!request.getShipper().getCountry().getCode().equals("SI")) {
 				throw new Exception("The Post of Slovenia supports only shipping from Slovenia (SI).");
 			}
-			if (request.getRecipient().getCountry().equals("SI")) {
+			if (request.getRecipient().getCountry().getCode().equals("SI")) {
 				return domesticRates(request.getWeight());
 			}
-			else if (isEuropeanUnion(request.getRecipient().getCountry())) {
+			else if (isEuropeanUnion(request.getRecipient().getCountry().getCode())) {
 				return europeanUnionRates(request.getWeight());
 			}
-			else if (isOtherEuropeanCountry(request.getRecipient().getCountry())) {
+			else if (isOtherEuropeanCountry(request.getRecipient().getCountry().getCode())) {
 				return otherEuropeanCountriesRates(request.getWeight());
 			}
 			else {
